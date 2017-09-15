@@ -1,0 +1,11 @@
+{
+	"id": "switch_users",
+	"version": "1.0",
+	"description": "Switch Users",
+	"categories": [
+		"admin",
+		"user management",
+		"switch"
+	],
+	"compatible_from": "2017.4"
+}
