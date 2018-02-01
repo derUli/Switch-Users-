@@ -1,24 +1,25 @@
 <?php
-$manager = new UserManager ();
-$users = $manager->getAllUsers ();
-echo ModuleHelper::buildMethodCallForm ( "SwitchUsers", "switchUser", array (
-		"url" => getCurrentURL () 
-), "post" );
+$manager = new UserManager();
+$users = $manager->getAllUsers();
+echo ModuleHelper::buildMethodCallForm("SwitchUsers", "switchUser", array(
+    "url" => getCurrentURL()
+), "post");
 ?>
 <strong><?php translate("switch_user");?></strong>
-<br />
-<select name="user_id" id="user_switch">
+<p>
+	<select name="user_id" id="user_switch">
 <?php foreach($users as $user){?>
 <?php
-	$group = new Group ( $user->getGroupId () );
-	$groupName = $group->getName () ? $group->getName () : "-";
-	?>
+    $group = new Group($user->getGroupId());
+    $groupName = $group->getName() ? $group->getName() : "-";
+    ?>
 <option value="<?php echo $user->getId();?>"
-		<?php if(get_user_id() == $user->getId()){ echo "selected";}?>><?php Template::escape($user->getUsername());?>
+			<?php if(get_user_id() == $user->getId()){ echo "selected";}?>><?php Template::escape($user->getUsername());?>
 		[<?php Template::escape($groupName);?>]
 		</option>
 <?php }?>
 </select>
+</p>
 </form>
 <script type="text/javascript">
 $(function(){
